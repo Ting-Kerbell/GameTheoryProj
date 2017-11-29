@@ -24,10 +24,10 @@
 <button id = "one" class="button">one</button>
 <button id = "two" class="button">two</button>
 
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src=https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js></script>
 <script>
-document.ready(){
+if($(document).ready()){
 pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
             subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'dgd' }); //keys UUID IS IMPORTANT NOW
 
