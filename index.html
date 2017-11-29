@@ -26,6 +26,10 @@
     <div id = "count2" style = "display:inline block;">
         0
     </div>
+
+    <button id = "reset" class="bubble">New Round</button>
+    
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.4.3.min.js"></script>
     <script type="text/javascript" src=https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js></script>
   <script>
 
@@ -35,6 +39,7 @@ pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052',
 pubnub.subscribe({
         channels: ['game'] 
     });
+
   pubnub.addListener({
 
                 message: function(obj){
@@ -45,16 +50,19 @@ pubnub.subscribe({
                     if(num==0){
                         var b = document.getElementById("count1")
                         b.innerHTML = 1 + parseInt(b.innerHTML)
-                    } else{
+                    } else if(num==1){
                         var b = document.getElementById("count2")
-                       
                         b.innerHTML = 1 + parseInt(b.innerHTML)
                     }
 }
                   
                 }}
                 );
+$("#reset").click(function() {
+        console.log("hello")
+        pubnub.publish({channel : "game", message : "3"}); //send the message to pubnub
 
+})
   </script>
 </body>
 </html>

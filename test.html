@@ -31,16 +31,37 @@ if($(document).ready()){
 pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
             subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'dgd' }); //keys UUID IS IMPORTANT NOW
 
+pubnub.subscribe({
+        channels: ['game'] 
+    });
+lock = false;
+  pubnub.addListener({
 
+                message: function(obj){
+                    //occurs when channellist gets a new message
+                    console.log(obj.message);
+                    var num = parseInt(obj.message);
+                   
+                    if(num==3){
+                       lock = false
+                    }
+
+}
+})
     $("#one").click(function() {
         console.log("hello")
-        pubnub.publish({channel : "game", message : "1"}); //send the message to pubnub
+        if(!lock){
+        pubnub.publish({channel : "game", message : "0"}); //send the message to pubnub
+        lock = true;
+    }
 
 })
     $("#two").click(function() {
     console.log("tow");
-        pubnub.publish({channel : "game", message : "0"}); //send the message to pubnub
-
+    if(!lock){
+        pubnub.publish({channel : "game", message : "1"}) //send the message to pubnub
+        lock = true;
+}
 })
 }
 
