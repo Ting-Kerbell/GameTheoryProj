@@ -1,0 +1,60 @@
+
+
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>shafted</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/background.css">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+    <div id = "count1" style = "display:inline block;">
+0
+    </div>
+    <div id = "count2" style = "display:inline block;">
+        0
+    </div>
+    <script type="text/javascript" src=https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js></script>
+  <script>
+
+pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
+            subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'dgd' }); //keys UUID IS IMPORTANT NOW
+
+pubnub.subscribe({
+        channels: ['game'] 
+    });
+  pubnub.addListener({
+
+                message: function(obj){
+                    //occurs when channellist gets a new message
+                    console.log(obj.message);
+                    var num = parseInt(obj.message);
+                    if(document.getElementById("count1")!=null){
+                    if(num==0){
+                        var b = document.getElementById("count1")
+                        b.innerHTML = 1 + parseInt(b.innerHTML)
+                    } else{
+                        var b = document.getElementById("count2")
+                       
+                        b.innerHTML = 1 + parseInt(b.innerHTML)
+                    }
+}
+                  
+                }}
+                );
+
+  </script>
+</body>
+</html>

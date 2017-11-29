@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<h2>Make a choice</h2>
+
+
+<button id = "one" class="button">one</button>
+<button id = "two" class="button">two</button>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src=https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js></script>
+<script>
+document.ready(){
+pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
+            subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'dgd' }); //keys UUID IS IMPORTANT NOW
+
+
+    $("#one").click(function() {
+        console.log("hello")
+        pubnub.publish({channel : "game", message : "1"}); //send the message to pubnub
+
+})
+    $("#two").click(function() {
+    console.log("tow");
+        pubnub.publish({channel : "game", message : "0"}); //send the message to pubnub
+
+})
+}
+
+
+
+</script>
+</body>
+</html>
