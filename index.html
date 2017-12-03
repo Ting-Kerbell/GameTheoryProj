@@ -20,19 +20,30 @@
 
 <body>
 
-    <div id = "count1" style = "display:inline block;">
+    <div id = "count1" style = "display:inline;">
 0
     </div>
-    <div id = "count2" style = "display:inline block;">
+    <div id = "count2" style = "display:inline;">
+0
+    </div>
+    <div id = "count3" style = "display:inline;">
+0
+    </div>
+    <div id = "count4" style = "display:inline;">
+0
+    </div>
+    <div id = "count5" style = "display:inline; ">
         0
     </div>
-
-    <button id = "reset" class="bubble">New Round</button>
+    <br>
+    <br>
+    <br>
+    <button id = "reset" class="thought">New Round</button>
     
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.3.min.js"></script>
     <script type="text/javascript" src=https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js></script>
   <script>
-
+min = 100;
 pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
             subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'dgd' }); //keys UUID IS IMPORTANT NOW
 
@@ -46,12 +57,26 @@ pubnub.subscribe({
                     //occurs when channellist gets a new message
                     console.log(obj.message);
                     var num = parseInt(obj.message);
+                    if(num!=6 && min>num){
+                      min = num;
+                    }
                     if(document.getElementById("count1")!=null){
+
                     if(num==0){
                         var b = document.getElementById("count1")
+
                         b.innerHTML = 1 + parseInt(b.innerHTML)
                     } else if(num==1){
                         var b = document.getElementById("count2")
+                        b.innerHTML = 1 + parseInt(b.innerHTML)
+                    }else if(num==3){
+                        var b = document.getElementById("count3")
+                        b.innerHTML = 1 + parseInt(b.innerHTML)
+                    }else if(num==4){
+                        var b = document.getElementById("count4")
+                        b.innerHTML = 1 + parseInt(b.innerHTML)
+                    }else if(num==5){
+                        var b = document.getElementById("count5")
                         b.innerHTML = 1 + parseInt(b.innerHTML)
                     }
 }
@@ -60,9 +85,26 @@ pubnub.subscribe({
                 );
 $("#reset").click(function() {
         console.log("hello")
-        pubnub.publish({channel : "game", message : "3"}); //send the message to pubnub
+        pubnub.publish({channel : "game", message : "6"}); //send the message to pubnub
+        document.getElementById("count1").innerHTML=0;
+        document.getElementById("count2").innerHTML=0;
+        document.getElementById("count3").innerHTML=0;
+        document.getElementById("count4").innerHTML=0;
+        document.getElementById("count5").innerHTML=0;
 
 })
+function get_chance (number)
+{
+  var chance = 10 - (2 * number);
+  var random = Math.floor((Math.random() * 10) + 1);
+  if (random <= chance)
+  {
+    return 1;
+  }else{
+    return 0;
+  }
+}
+
   </script>
 </body>
 </html>

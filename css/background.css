@@ -10,6 +10,7 @@ font-family: Arial, Helvetica, sans-serif;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    font-size:24px
 }
 
 .story {
@@ -27,6 +28,7 @@ margin-right: 20px;
 .bubble 
 {
 margin: 0 auto;
+display: block;
 position: relative;
 width: 240px;
 height: 120px;
@@ -84,7 +86,7 @@ left: 73%;
     cursor: pointer;
     font-family: inherit;
     font-size: inherit;
-   
+    display:block;
     outline: 0;
     padding: 15px;
     background-color: #0e0B16;
