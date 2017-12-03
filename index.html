@@ -38,6 +38,9 @@
     <br>
     <br>
     <br>
+    <button id = "end" class="thought">End Round</button>
+    <br>
+    <br>
     <button id = "reset" class="thought">New Round</button>
     
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.3.min.js"></script>
@@ -93,6 +96,17 @@ $("#reset").click(function() {
         document.getElementById("count5").innerHTML=0;
 
 })
+$("#end").click(function() {
+        console.log("hello")
+        pubnub.publish({channel : "game", message : "6"}); //send the message to pubnub
+        var bane = get_chance(min);
+        document.getElementById("count1").innerHTML= payoff(0, bane);
+        document.getElementById("count2").innerHTML=payoff(5, bane);
+        document.getElementById("count3").innerHTML=payoff(10, bane);
+        document.getElementById("count4").innerHTML=payoff(15, bane);
+        document.getElementById("count5").innerHTML=payoff(20, bane);
+
+})
 function get_chance (number)
 {
   var chance = 10 - (2 * number);
@@ -104,6 +118,19 @@ function get_chance (number)
     return 0;
   }
 }
+
+function payoff (effort, Bane_has_entered)
+{
+  var payoff;
+  if (Bane_has_entered){
+    payoff = 0 - effort;
+  }else{
+    payoff = 25 - effort;
+  }
+
+  return payoff;
+}
+
 
   </script>
 </body>
