@@ -18,6 +18,7 @@
 <body>
      <h1 class = "announce"> Bane
 </h1>
+<img id = "result" src = "css/img/sec.jpg" style = "display: block; margin: auto; width: 40%;"/>
 <br>
  <div id="contain1" style = "display:inline-block; width:150px; margin-right:50px; height:100px; margin-left:50px">
   <span class = "label"> Option 1 </p>
@@ -103,6 +104,7 @@ pubnub.subscribe({
 $("#reset").click(function() {
         console.log("hello")
         pubnub.publish({channel : "game", message : "6"}); //send the message to pubnub
+        min = 100;
         document.getElementById("count1").innerHTML=0;
         document.getElementById("count2").innerHTML=0;
         document.getElementById("count3").innerHTML=0;
@@ -125,10 +127,13 @@ function get_chance (number)
 {
   var chance = 10 - (2 * number);
   var random = Math.floor((Math.random() * 10) + 1);
+  var res = document.getElementById("result");
   if (random <= chance)
   {
+    res.src = "css/img/bane.jpg";
     return 1;
   }else{
+     res.src = "css/img/happy.jpg";
     return 0;
   }
 }
