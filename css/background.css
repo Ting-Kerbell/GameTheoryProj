@@ -28,7 +28,10 @@ font-size:40px;
     display:inline;
     letter-spacing: 1px;
 }
-
+.announce{
+  margin: 0 auto;
+   text-align:center;
+}
 .bg-primary {
   background: #fdcc52;
   background: -webkit-linear-gradient(#fdcc52, #fdc539);
