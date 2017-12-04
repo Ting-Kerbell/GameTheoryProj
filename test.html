@@ -107,7 +107,7 @@ five = document.getElementById("five");
 }
 })
     $("#three").click(function() {
-    console.log("tow");
+    console.log("thre:");
     if(!lock){
         pubnub.publish({channel : "game", message : "3"}) //send the message to pubnub
          document.getElementById("three").style.backgroundColor = "#24305E";
@@ -119,7 +119,7 @@ five = document.getElementById("five");
 }
 })
     $("#four").click(function() {
-    console.log("tow");
+    console.log("fou");
     if(!lock){
         pubnub.publish({channel : "game", message : "4"}) //send the message to pubnub
        document.getElementById("four").style.backgroundColor = "#24305E";
@@ -131,7 +131,7 @@ five = document.getElementById("five");
 }
 })
     $("#five").click(function() {
-    console.log("tow");
+    console.log("fiv");
     if(!lock){
         pubnub.publish({channel : "game", message : "5"}) //send the message to pubnub
         document.getElementById("five").style.backgroundColor = "#24305E";

@@ -16,9 +16,26 @@
 </head>
 
 <body>
-     <h1 class = "announce"> Bane
+     <h1 class = "announce"> Stadium Scenario
 </h1>
-<img id = "result" src = "css/img/sec.jpg" style = "display: block; margin: auto; width: 40%;"/>
+<br>
+<img id = "result" src = "css/img/sec.jpg" style = "display: block; margin: auto; width: 20%;"/>
+<br> <br>
+<div id = "instr" style = "margin-left: 25px; margin-right: 25px; font-size:20px;">
+You are all working security at a school event. The event is in a stadium, and each person is responsible for security at a certain entrance. The stadium has many entrances. As a security guard, it is up to you to decide how much effort you want to put into searching people. There is a cost to more intense security. You have five options:
+<br>
+Option 1: No security (Zero cost): probability Bane enters: p = 1,     <br>
+Option 2: Quick check (Cost = 5):  p = .8,    <br>
+Option 3: Metal detector (Cost = 10): p = .4,   <br>
+Option 4: Patdown (Cost = 15): p = .2,  <br>
+Option 5: Full security screening (Cost = 20): p = 0, <br>
+
+Less intense security increases the probability of a criminal (Bane) will enter the event. It is important to note that security is only as strong as the weakest link. 
+<br>
+This game will have ten rounds. It is important to keep track of your payoff from each round. Make sure to keep track of your utility:
+Good luck!
+</div>
+<br>
 <br>
  <div id="contain1" style = "display:inline-block; width:150px; margin-right:50px; height:100px; margin-left:50px">
   <span class = "label"> Option 1 </p>
@@ -57,6 +74,9 @@
     <br>
     <br>
     <button id = "reset" class="btn btn-outline btn-x1">New Round</button>
+    <br>
+    <br>
+    <button id = "show" class="btn btn-outline btn-x1">Show Counters</button>
     
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.3.min.js"></script>
     <script type="text/javascript" src=https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js></script>
@@ -110,17 +130,39 @@ $("#reset").click(function() {
         document.getElementById("count3").innerHTML=0;
         document.getElementById("count4").innerHTML=0;
         document.getElementById("count5").innerHTML=0;
+           document.getElementById("count1").style.visibility = "hidden";
+        document.getElementById("count2").style.visibility = "hidden";
+        document.getElementById("count3").style.visibility = "hidden";
+        document.getElementById("count4").style.visibility = "hidden";
+        document.getElementById("count5").style.visibility = "hidden";
+        var res = document.getElementById("result");
+        res.src = "css/img/sec.jpg";
+
 
 })
 $("#end").click(function() {
         console.log("hello")
-        pubnub.publish({channel : "game", message : "6"}); //send the message to pubnub
+        
         var bane = get_chance(min);
+           document.getElementById("count1").style.visibility = "visible";
+        document.getElementById("count2").style.visibility = "visible";
+        document.getElementById("count3").style.visibility = "visible";
+        document.getElementById("count4").style.visibility = "visible";
+        document.getElementById("count5").style.visibility = "visible";
         document.getElementById("count1").innerHTML= payoff(0, bane);
         document.getElementById("count2").innerHTML=payoff(5, bane);
         document.getElementById("count3").innerHTML=payoff(10, bane);
         document.getElementById("count4").innerHTML=payoff(15, bane);
         document.getElementById("count5").innerHTML=payoff(20, bane);
+
+})
+$("#show").click(function() {
+        console.log("show")
+        document.getElementById("count1").style.visibility = "visible";
+        document.getElementById("count2").style.visibility = "visible";
+        document.getElementById("count3").style.visibility = "visible";
+        document.getElementById("count4").style.visibility = "visible";
+        document.getElementById("count5").style.visibility = "visible";
 
 })
 function get_chance (number)
@@ -130,7 +172,7 @@ function get_chance (number)
   var res = document.getElementById("result");
   if (random <= chance)
   {
-    res.src = "css/img/bane.jpg";
+    res.src = "css/img/Bane.jpg";
     return 1;
   }else{
      res.src = "css/img/happy.jpg";

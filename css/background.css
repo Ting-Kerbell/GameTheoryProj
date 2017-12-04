@@ -19,6 +19,7 @@ body {
   	color:white;
 	display:inline;
 font-size:40px;
+visibility: hidden;
 }
 .label{
 	    color: #fdcc52;
@@ -27,6 +28,13 @@ font-size:40px;
     font-weight: 200;
     display:inline;
     letter-spacing: 1px;
+}
+#result {
+  border-radius: 20px;
+
+  display: block; 
+  margin: auto; 
+  width: 20%;
 }
 .announce{
   margin: 0 auto;
