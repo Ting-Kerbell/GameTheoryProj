@@ -36,9 +36,15 @@ visibility: hidden;
   margin: auto; 
   width: 20%;
 }
+.round {
+
+  margin: 0 auto;
+   text-align:center;
+}
 .announce{
   margin: 0 auto;
    text-align:center;
+   font-size:69px;
 }
 .bg-primary {
   background: #fdcc52;

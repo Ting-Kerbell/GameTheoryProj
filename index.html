@@ -4,9 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>shafted</title>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
+  <title>Weakest Link</title>
 
   <link rel="stylesheet" href="css/background.css">
 
@@ -18,6 +16,10 @@
 <body>
      <h1 class = "announce"> Stadium Scenario
 </h1>
+<br>
+<h1 id = "roundnum" class = "round"> Round 0
+</h1>
+
 <br>
 <img id = "result" src = "css/img/sec.jpg" style = "display: block; margin: auto; width: 20%;"/>
 <br> <br>
@@ -77,10 +79,16 @@ Good luck!
     <br>
     <br>
     <button id = "show" class="btn btn-outline btn-x1">Show Counters</button>
+    <br>
+    <br>
+    <div id = "about" style = "text-align:center">
+      By Darren Ting, etc.
+    </div>
     
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.4.3.min.js"></script>
     <script type="text/javascript" src=https://cdn.pubnub.com/sdk/javascript/pubnub.4.0.11.min.js></script>
   <script>
+  round = 0;
 min = 100;
 pubnub = new PubNub({ publishKey : 'pub-c-4b29479c-3ace-45d9-9daf-07a625cd1052', 
             subscribeKey : 'sub-c-da56adfa-4bc9-11e7-a368-0619f8945a4f', uuid: 'dgd' }); //keys UUID IS IMPORTANT NOW
@@ -125,6 +133,7 @@ $("#reset").click(function() {
         console.log("hello")
         pubnub.publish({channel : "game", message : "6"}); //send the message to pubnub
         min = 100;
+        round++;
         document.getElementById("count1").innerHTML=0;
         document.getElementById("count2").innerHTML=0;
         document.getElementById("count3").innerHTML=0;
@@ -135,6 +144,7 @@ $("#reset").click(function() {
         document.getElementById("count3").style.visibility = "hidden";
         document.getElementById("count4").style.visibility = "hidden";
         document.getElementById("count5").style.visibility = "hidden";
+        document.getElementById("roundnum").innerHTML = "Round "+round;
         var res = document.getElementById("result");
         res.src = "css/img/sec.jpg";
 
