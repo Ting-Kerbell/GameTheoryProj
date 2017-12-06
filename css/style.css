@@ -115,7 +115,7 @@ section {
 body.masthead {
   position: relative;
   width: 100%;
-  padding-top: 150px;
+  padding-top: 100px;
   padding-bottom: 100px;
   color: white;
   background: url("img/bg-pattern.png"), #7b4397;
@@ -128,7 +128,7 @@ body.masthead {
     body.masthead .header-content h1 {
       font-size: 30px; }
   body.masthead .device-container {
-    max-width: 325px;
+    max-width: 400px;
     margin-right: auto;
     margin-left: auto; }
     body.masthead .device-container .screen img {
